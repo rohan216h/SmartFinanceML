@@ -24,6 +24,7 @@ def get_data(ticker, start, end):
     else:
         df = yf.download(ticker, start=start, end=end, auto_adjust=False)
         df.to_csv(path)
+        df["Adj Close"] = pd.to_numeric(df["Adj Close"], errors="coerce")
     df["Return"] = df["Adj Close"].pct_change()
     df.dropna(inplace=True)
     return df
@@ -74,6 +75,8 @@ if __name__ == "__main__":
     df_z = detect_zscore_anomalies(df)
     plot_anomalies(df_z, method="Z")
 
-    # Isolation Forest Detection
-    df_if = detect_isolation_forest(df)
-    plot_anomalies(df_if, method="IF")
+   # Isolation Forest Detection and Save
+df_if = detect_isolation_forest(df)
+plot_anomalies(df_if, method="IF")
+plt.savefig("reports/AAPL_anomalies_IF.png")
+plt.close()
