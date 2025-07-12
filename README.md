@@ -11,7 +11,7 @@ An end-to-end machine learning project for financial forecasting, recommendation
 
 ---
 
-### 🏁 1.7 GitHub Init
+### 🏁 GitHub Init
 
 Run these in terminal:
 

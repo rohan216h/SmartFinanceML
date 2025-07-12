@@ -90,3 +90,13 @@ plt.legend()
 plt.tight_layout()
 plt.savefig("reports/news_sentiment_lstm.png")
 plt.show()
+# Step 8: Save model and tokenizer
+print("💾 Saving model and tokenizer...")
+os.makedirs("models", exist_ok=True)
+model.save("models/lstm_sentiment_model.h5")
+
+import pickle
+with open("models/tokenizer.pkl", "wb") as f:
+    pickle.dump(tokenizer, f)
+
+print("✅ Model and tokenizer saved.")
